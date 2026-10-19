@@ -23,7 +23,7 @@ function App() {
         </div>
         <button
           type="button"
-          className="counter"
+          className="mb-6 inline-flex rounded-[5px] border-2 border-transparent bg-(--accent-bg) px-2.5 py-[5px] font-(family-name:--mono) text-base text-(--accent) transition-[border-color] duration-300 hover:border-(--accent-border) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent)"
           onClick={() => setCount((count) => count + 1)}
         >
           Count is {count}
