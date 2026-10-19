@@ -12,7 +12,7 @@
 | 言語 | TypeScript 6 / JavaScript（ES Modules） | API・Web・共有スキーマと設定ファイル |
 | Web UI | React 19 / React DOM 19 | `web/` の UI とブラウザーへの描画 |
 | Web ビルド・開発 | Vite 8 / `@vitejs/plugin-react` | 開発サーバー・React の開発支援・本番ビルド |
-| スタイル | CSS | `web/` の画面スタイル |
+| スタイル | Tailwind CSS 4 / `@tailwindcss/vite` | `web/` のユーティリティクラスによるスタイリングと Vite 連携 |
 | API フレームワーク | Hono 4 | `api/` のルーティングとリクエスト処理 |
 | API 実行・デプロイ先 | Cloudflare Workers | API の実行環境 |
 | Workers 開発 CLI | Wrangler 4 | ローカル開発・型生成・ビルド・デプロイ |
