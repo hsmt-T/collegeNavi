@@ -1,0 +1,126 @@
+@import '../ui/ui.css';
+
+.cn-stepper {
+  padding: 20px;
+  border: 1px solid var(--cn-b-line);
+  border-radius: 4px;
+  background: var(--cn-b-white);
+}
+.cn-stepper ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 600px) {
+  .cn-stepper ol {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.cn-header {
+  --cn-b-dark: #31312d;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+  padding: 20px 32px;
+  background: var(--cn-b-dark);
+  color: var(--cn-b-white);
+}
+.cn-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+}
+.cn-header__brand span:last-child {
+  overflow-wrap: anywhere;
+}
+.cn-header__app-name {
+  flex-shrink: 0;
+}
+.cn-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+}
+.cn-header__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 13px;
+}
+.cn-header__link span:last-child {
+  overflow-wrap: anywhere;
+}
+.cn-header a:hover {
+  text-decoration: underline;
+}
+.cn-header a:focus-visible {
+  outline-color: var(--cn-b-white);
+}
+.cn-sidebar {
+  display: flex;
+  flex: 0 0 224px;
+  flex-direction: column;
+  align-self: flex-start;
+  gap: 8px;
+  width: 224px;
+  max-width: 100%;
+  padding: 16px;
+  background: var(--cn-b-white);
+}
+.cn-sidebar__school {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.cn-sidebar__status {
+  color: var(--cn-b-sub);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.cn-sidebar__divider {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background: var(--cn-b-line);
+}
+.cn-sidebar__items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 600px) {
+  .cn-header {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+  }
+  .cn-header__brand {
+    gap: 12px;
+    font-size: 18px;
+  }
+  .cn-header__actions {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .cn-header__link {
+    gap: 8px;
+  }
+}

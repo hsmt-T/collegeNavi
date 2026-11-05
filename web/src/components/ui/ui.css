@@ -1,0 +1,317 @@
+@import '@fontsource/noto-sans-jp/400.css';
+@import '@fontsource/noto-sans-jp/700.css';
+
+.cn-ui {
+  --cn-b-white: #fff;
+  --cn-b-ink: #23221f;
+  --cn-b-sub: #666661;
+  --cn-b-line: #d6d6d2;
+  --cn-b-bg: #f5f5f3;
+  --cn-b-blue: #0077c7;
+  --cn-b-pale: #ebf4fa;
+  --cn-b-red: #c33b32;
+  box-sizing: border-box;
+  color: var(--cn-b-ink);
+  font:
+    400 14px/1.5 'Noto Sans JP',
+    sans-serif;
+  letter-spacing: 0;
+  text-align: left;
+  color-scheme: light;
+}
+
+.cn-ui *,
+.cn-ui *::before,
+.cn-ui *::after {
+  box-sizing: border-box;
+}
+.cn-ui p {
+  margin: 0;
+}
+.cn-ui:focus-visible,
+.cn-ui :focus-visible {
+  outline: 2px solid var(--cn-b-blue);
+  outline-offset: 3px;
+}
+.cn-ui:disabled,
+.cn-ui:has(input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.cn-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Material Icons';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+.cn-icon--20 {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+}
+.cn-icon--28 {
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+}
+.cn-icon--24 {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+.cn-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px;
+  background: var(--cn-b-white);
+  color: var(--cn-b-ink);
+  font-size: 13px;
+  text-decoration: none;
+}
+.cn-nav-item > .cn-icon {
+  color: var(--cn-b-sub);
+}
+.cn-nav-item[aria-current='page'] {
+  background: var(--cn-b-pale);
+}
+.cn-nav-item[aria-current='page'] > .cn-icon {
+  color: var(--cn-b-blue);
+}
+.cn-nav-item:hover {
+  background: var(--cn-b-bg);
+  text-decoration: underline;
+}
+.cn-nav-item[aria-current='page']:hover {
+  background: var(--cn-b-pale);
+}
+.cn-nav-item > span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.cn-badge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-width: 32px;
+  padding: 1px 3px;
+  background: var(--cn-b-red);
+  color: var(--cn-b-white);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.cn-button {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--cn-b-line);
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cn-button--primary {
+  background: var(--cn-b-blue);
+  color: var(--cn-b-white);
+}
+.cn-button--secondary {
+  background: var(--cn-b-white);
+  color: var(--cn-b-ink);
+}
+.cn-button:not(:disabled):hover {
+  filter: brightness(0.95);
+}
+.cn-input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--cn-b-line);
+  border-radius: 4px;
+  background: var(--cn-b-white);
+}
+.cn-input::placeholder {
+  color: var(--cn-b-sub);
+  opacity: 1;
+}
+.cn-input[aria-invalid='true'] {
+  border-color: var(--cn-b-red);
+}
+.cn-textarea {
+  min-height: 75px;
+  resize: vertical;
+}
+.cn-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  background: var(--cn-b-white);
+}
+.cn-field__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+.cn-field__helper {
+  font-size: 12px;
+  color: var(--cn-b-sub);
+}
+.cn-field__error {
+  font-size: 12px;
+  color: var(--cn-b-red);
+}
+.cn-checkbox {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: var(--cn-b-white);
+  cursor: pointer;
+}
+.cn-checkbox input {
+  appearance: none;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 0;
+  color: var(--cn-b-sub);
+  cursor: inherit;
+}
+.cn-checkbox input::before {
+  content: '\e835';
+  display: block;
+  font: 400 20px/1 'Material Icons';
+}
+.cn-checkbox input:checked::before {
+  content: '\e834';
+  color: var(--cn-b-blue);
+}
+.cn-checkbox input:indeterminate::before {
+  content: '\e909';
+  color: var(--cn-b-blue);
+}
+.cn-step {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: var(--cn-b-white);
+  color: var(--cn-b-sub);
+}
+.cn-step--current {
+  color: var(--cn-b-blue);
+  font-weight: 700;
+}
+.cn-alert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--cn-b-pale);
+}
+.cn-alert > .cn-icon,
+.cn-feature > .cn-icon {
+  color: var(--cn-b-blue);
+}
+.cn-feature {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px;
+  background: var(--cn-b-bg);
+}
+.cn-feature__content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cn-feature__title {
+  font-size: 18px;
+  font-weight: 700;
+}
+.cn-feature__description {
+  color: var(--cn-b-sub);
+}
+.cn-description {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--cn-b-white);
+}
+.cn-description dt {
+  flex: 0 0 240px;
+  color: var(--cn-b-sub);
+  font-weight: 700;
+}
+.cn-description dd {
+  margin: 0;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.cn-upload {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--cn-b-line);
+  border-radius: 4px;
+  background: var(--cn-b-bg);
+}
+.cn-upload > .cn-icon {
+  color: var(--cn-b-sub);
+}
+.cn-upload__label {
+  position: relative;
+  flex-shrink: 0;
+  color: var(--cn-b-blue);
+  font-weight: 700;
+  cursor: pointer;
+}
+.cn-upload__label:has(:focus-visible) {
+  outline: 2px solid var(--cn-b-blue);
+  outline-offset: 3px;
+}
+.cn-upload__selection {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--cn-b-sub);
+  font-size: 12px;
+}
+.cn-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 600px) {
+  .cn-description {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cn-description dt {
+    flex-basis: auto;
+  }
+  .cn-upload {
+    flex-wrap: wrap;
+  }
+}
