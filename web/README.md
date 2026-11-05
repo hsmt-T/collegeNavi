@@ -1,6 +1,6 @@
 # Web
 
-React・TypeScript・Vite・Tailwind CSS で実装するフロントエンドです。
+React・TypeScript・Vite・CSS で実装するフロントエンドです。
 コマンドは `web/` で実行します。
 
 ## セットアップ・起動
@@ -30,11 +30,10 @@ pnpm preview
 
 ## コード規約・CI
 
-スタイリングは **Tailwind CSS** のユーティリティクラスを基本とし、
-React コンポーネントの `className` に記述します。
-Vite プラグイン `@tailwindcss/vite` を使用し、`src/index.css` で Tailwind を読み込みます。
+スタイリングは **CSS** を使用し、コンポーネントに対応する CSS ファイルで管理します。
 共通のテーマ変数や全体の基本スタイルは `src/index.css` にまとめます。
-既存テンプレートの CSS は、コンポーネントの変更に合わせて Tailwind に移行します。
+画面の作成には `src/components` の共通 React コンポーネントを使用します。
+共通部品のスタイルは `src/components/ui/ui.css` などにまとめています。
 
 ESLint で TypeScript、React Hooks、React Refresh のルールを適用します。
 Web CI では `pnpm lint` と `pnpm build` を実行します。
