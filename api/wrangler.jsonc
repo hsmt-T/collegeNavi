@@ -8,27 +8,27 @@
       "binding": "D1",
       "database_name": "collegenavi-db",
       "database_id": "4a81b032-43f2-41f3-894b-0bb59430b9b4",
-      "remote": true
-    }
+      "remote": true,
+    },
   ],
   "r2_buckets": [
     {
       "bucket_name": "collegenavi-r2",
       "binding": "R2",
-      "remote": true
-    }
+      "remote": true,
+    },
   ],
   "vectorize": [
     {
       "binding": "VECTORIZE",
       "index_name": "college-embeddings",
-      "remote": true
-    }
+      "remote": true,
+    },
   ],
   "ai": {
     "binding": "AI",
-    "remote": true
-  }
+    "remote": true,
+  },
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
