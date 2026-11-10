@@ -3,6 +3,32 @@
   "name": "api",
   "main": "src/index.ts",
   "compatibility_date": "2026-10-19",
+  "d1_databases": [
+    {
+      "binding": "D1",
+      "database_name": "collegenavi-db",
+      "database_id": "4a81b032-43f2-41f3-894b-0bb59430b9b4",
+      "remote": true,
+    },
+  ],
+  "r2_buckets": [
+    {
+      "bucket_name": "collegenavi-r2",
+      "binding": "R2",
+      "remote": true,
+    },
+  ],
+  "vectorize": [
+    {
+      "binding": "VECTORIZE",
+      "index_name": "college-embeddings",
+      "remote": true,
+    },
+  ],
+  "ai": {
+    "binding": "AI",
+    "remote": true,
+  },
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
@@ -13,19 +39,6 @@
   //   {
   //     "binding": "MY_KV_NAMESPACE",
   //     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  //   }
-  // ],
-  // "r2_buckets": [
-  //   {
-  //     "binding": "MY_BUCKET",
-  //     "bucket_name": "my-bucket"
-  //   }
-  // ],
-  // "d1_databases": [
-  //   {
-  //     "binding": "MY_DB",
-  //     "database_name": "my-database",
-  //     "database_id": ""
   //   }
   // ],
   // "ai": {

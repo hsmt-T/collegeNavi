@@ -7,6 +7,7 @@ Hono と TypeScript で実装する Cloudflare Workers の API です。
 
 ```sh
 pnpm install --frozen-lockfile
+pnpm cf-typegen
 pnpm dev
 ```
 
@@ -26,7 +27,7 @@ pnpm dev
 | `pnpm deploy`                                       | Cloudflare Workers にデプロイ                          |
 
 デプロイには Cloudflare の認証と対象アカウントの権限が必要です。
-Bindings を変更した場合は `pnpm cf-typegen` を実行し、生成された型を使用します。
+生成ファイル `worker-configuration.d.ts` は Git 管理対象外です。初回セットアップ時、Bindings・`compatibility_date`・互換性フラグの変更時、Wrangler 更新時に `pnpm cf-typegen` を実行してください。
 
 ```ts
 const app = new Hono<{ Bindings: CloudflareBindings }>()
@@ -49,7 +50,7 @@ ESLint の TypeScript 向け推奨ルールを使用します。
 Prettier はシングルクォート・セミコロンなし・LF 改行で整形します。
 生成物・ロックファイル・環境変数ファイルなどは整形対象から除外しています。
 
-API CI では `pnpm lint`、`pnpm format:check`、Wrangler の dry-run ビルドを実行します。
+API CI では `pnpm cf-typegen` で型を生成してから、`pnpm exec tsc --noEmit`、`pnpm lint`、`pnpm format:check`、Wrangler の dry-run ビルドを実行します。
 
 ## AI 開発スキル
 
