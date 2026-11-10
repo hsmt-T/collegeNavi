@@ -46,6 +46,10 @@ jobs:
         working-directory: schemas
       - name: Install API dependencies
         run: pnpm install --frozen-lockfile
+      - name: Generate Worker types
+        run: pnpm cf-typegen
+      - name: Type check
+        run: pnpm exec tsc --noEmit
       - name: Lint
         run: pnpm lint
       - name: Check formatting
