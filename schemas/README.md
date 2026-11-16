@@ -57,6 +57,11 @@ INTEGERは整数、TEXTは文字列として検証します。全カラムを必
 キャンパスごとのキーワード最大3件など、複数行にまたがる制約はDB・APIで保証する必要があります。
 認証用テーブルの型には `password_hash` が含まれるため、公開レスポンスにはそのまま使用しないでください。
 
+## API接続確認
+
+`health.ts` はD1接続確認の応答用に `databaseHealthSchema`・`DatabaseHealth` を公開します。
+APIの応答型とOpenAPI定義で共有し、行を取得できない場合の `null` も表現します。
+
 ## 学校向け入力フォーム
 
 `school_forms.ts` では保存済みレコードとは別に、入力用の `schoolFormSchema`・
