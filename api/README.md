@@ -52,6 +52,31 @@ Prettier はシングルクォート・セミコロンなし・LF 改行で整�
 
 API CI では `pnpm cf-typegen` で型を生成してから、`pnpm exec tsc --noEmit`、`pnpm lint`、`pnpm format:check`、Wrangler の dry-run ビルドを実行します。
 
+## API の自動デプロイ
+
+`.github/workflows/api-ci.yml` は、`main` への push（PR のマージを含む）時に、
+CI の全チェックが成功した後で API を Cloudflare Workers にデプロイします。
+対象の変更は `api/**`、`schemas/**`、このワークフローです。
+PR・その他のブランチへの push・手動実行では検証のみ行います。
+main の実行は新しい push でキャンセルせず、デプロイ途中の中断を避けます。
+
+GitHub リポジトリの **Settings → Secrets and variables → Actions → Secrets** に、以下を登録してください。
+
+| Secret                  | 内容                                            |
+| ----------------------- | ----------------------------------------------- |
+| `CLOUDFLARE_API_TOKEN`  | 対象アカウントに限定したデプロイ用 API トークン |
+| `CLOUDFLARE_ACCOUNT_ID` | デプロイ先の Cloudflare アカウント ID           |
+
+トークンは Cloudflare の「Edit Cloudflare Workers」テンプレートを基に作成し、
+`wrangler.jsonc` の D1・R2・Vectorize・AI のバインディングに必要な権限も確認してください。
+対象アカウントに設定済みの各リソースが必要です。
+Secret が未設定の場合、デプロイは設定名を表示して失敗します。値はログに出しません。
+
+デプロイ先・バインディングは `api/wrangler.jsonc`、コマンドは `pnpm run deploy` を使います。
+Web のデプロイや D1 のマイグレーションはこのワークフローに含めません。
+
+参照: [Cloudflare の GitHub Actions 設定](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)
+
 ## AI 開発スキル
 
 このディレクトリの実装・修正・レビューでは **hono-skills** を使用します。
