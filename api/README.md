@@ -42,7 +42,8 @@ const app = new Hono<{ Bindings: CloudflareBindings }>()
 | `/docs`         | Swagger UI。API仕様の閲覧とTry it outによるリクエスト実行 |
 | `/openapi.json` | OpenAPI 3.1のJSON定義                                     |
 
-既存の `GET /health/db` をドキュメント化しています。
+既存の `GET /health/db` は通常のHonoルートのままとし、OpenAPI定義には含めません。
+現時点のOpenAPI定義には業務APIが未登録のため、エンドポイント一覧は空です。
 Swagger UIは同じオリジンのAPIへリクエストします。UIのJS・CSSは外部CDNから読み込みます。
 
 APIの追加時は `@hono/zod-openapi` の `createRoute` と `app.openapi` でルートを登録し、
