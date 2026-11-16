@@ -1,0 +1,269 @@
+.school-workflow {
+  background: var(--cn-b-bg);
+}
+.school-workflow .school-shell {
+  min-height: calc(100svh - 73px);
+  align-items: start;
+}
+.school-workflow .school-shell > .cn-sidebar {
+  height: auto;
+}
+.school-workflow .school-main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  padding: 32px;
+}
+.school-workflow--registration .school-main {
+  gap: 28px;
+  padding: 40px;
+}
+.school-workflow .page-heading {
+  display: grid;
+  gap: 24px;
+  margin: 0;
+}
+.school-workflow--registration .page-heading {
+  gap: 28px;
+}
+.school-workflow .page-heading h1 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.workflow-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--cn-b-sub);
+}
+.workflow-breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+.school-workflow .panel {
+  margin: 0;
+  padding: 24px;
+  border-radius: 4px;
+}
+.school-workflow .panel h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.school-workflow .panel p {
+  line-height: 1.5;
+}
+.school-workflow .form-stack {
+  gap: 20px;
+}
+.school-workflow .school-main > .cn-alert {
+  margin: 0;
+}
+.school-workflow .page-actions {
+  justify-content: flex-start;
+  gap: 12px;
+  margin: 0;
+}
+.workflow-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--cn-b-line);
+  flex: none;
+}
+.workflow-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 800fr) minmax(0, 328fr);
+  gap: 24px;
+  align-items: start;
+}
+.workflow-panels {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+.school-workflow .workflow-guide h2 {
+  font-size: 18px;
+}
+.workflow-guide {
+  min-width: 0;
+}
+.workflow-guide ol {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--cn-b-sub);
+  line-height: 1.5;
+}
+.workflow-guide a {
+  color: inherit;
+  text-decoration: none;
+}
+.workflow-guide .cn-button {
+  justify-self: start;
+  max-width: 100%;
+}
+.workflow-guide > .cn-icon {
+  color: var(--cn-b-blue);
+}
+.school-workflow .workflow-note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--cn-b-sub);
+}
+.workflow-toolbar,
+.workflow-section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.workflow-toolbar > span {
+  color: var(--cn-b-sub);
+  font-size: 12px;
+}
+.school-workflow .workflow-field--short {
+  width: min(420px, 100%);
+}
+.school-workflow .registration-form > .cn-field {
+  max-width: 700px;
+}
+.school-workflow .registration-form .cn-alert {
+  font-size: 12px;
+}
+.school-workflow .keyword-fields {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.workflow-photo .cn-image-preview {
+  padding: 12px;
+  background: var(--cn-b-bg);
+}
+.workflow-photo .cn-image-preview__frame:has(.cn-image-preview__empty) {
+  display: none;
+}
+.school-workflow .workflow-listing {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+.workflow-listing__image {
+  width: 100%;
+  height: 124px;
+  object-fit: cover;
+  display: block;
+}
+.workflow-listing__image--empty {
+  background: #ededea;
+  color: var(--cn-b-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.school-workflow .workflow-listing h2 {
+  font-size: 24px;
+}
+.school-workflow .workflow-listing h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.school-workflow .workflow-listing .preserve-lines {
+  line-height: 1.7;
+}
+.school-workflow .keyword-list {
+  margin: 0;
+}
+.workflow-icon-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.workflow-icon-heading .cn-icon {
+  color: var(--cn-b-blue);
+}
+.workflow-event-details summary {
+  width: fit-content;
+  padding: 10px 12px;
+  border: 1px solid var(--cn-b-line);
+  border-radius: 4px;
+  color: white;
+  background: var(--cn-b-blue);
+  font-weight: 700;
+  cursor: pointer;
+}
+.workflow-event-details dl {
+  padding: 16px;
+  border: 1px solid var(--cn-b-line);
+}
+.workflow-event-details dd {
+  margin: 4px 0 16px;
+  overflow-wrap: anywhere;
+}
+.workflow-application dl {
+  margin: 0;
+}
+.workflow-application .cn-description {
+  min-height: 64px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--cn-b-line);
+}
+.workflow-application .cn-description:last-child {
+  border: 0;
+  padding-bottom: 0;
+}
+.workflow-application .cn-description:first-child {
+  padding-top: 0;
+}
+.workflow-application .cn-description dt {
+  flex-basis: 240px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.workflow-application .cn-description dd {
+  margin: 0;
+  font-size: 14px;
+}
+@media (max-width: 1100px) {
+  .workflow-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .workflow-guide {
+    max-width: 100%;
+  }
+}
+@media (max-width: 800px) {
+  .school-workflow .school-main,
+  .school-workflow--registration .school-main {
+    padding: 24px 20px 40px;
+  }
+  .school-workflow .panel {
+    padding: 20px;
+  }
+  .school-workflow .page-heading h1 {
+    font-size: 24px;
+  }
+  .workflow-application .cn-description {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .workflow-application .cn-description dt {
+    flex-basis: auto;
+  }
+  .workflow-toolbar .cn-button {
+    flex: 1 1 180px;
+  }
+}
+
+.school-workflow .skip-link:not(:focus) {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

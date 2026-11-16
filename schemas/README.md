@@ -35,13 +35,13 @@ import { collegeSchema, type College } from '@collegenavi/schemas'
 const college: College = collegeSchema.parse(record)
 ```
 
-| ファイル | スキーマ | 型 |
-| --- | --- | --- |
-| colleges.ts | collegeSchema | College |
-| college_keywords.ts | collegeKeywordSchema | CollegeKeyword |
-| clients.ts | clientSchema | Client |
-| events.ts | eventSchema | Event |
-| imgs.ts | imgSchema | Img |
+| ファイル               | スキーマ                | 型                |
+| ---------------------- | ----------------------- | ----------------- |
+| colleges.ts            | collegeSchema           | College           |
+| college_keywords.ts    | collegeKeywordSchema    | CollegeKeyword    |
+| clients.ts             | clientSchema            | Client            |
+| events.ts              | eventSchema             | Event             |
+| imgs.ts                | imgSchema               | Img               |
 | college_search_sync.ts | collegeSearchSyncSchema | CollegeSearchSync |
 
 INTEGERは整数、TEXTは文字列として検証します。全カラムを必須とし、
@@ -56,3 +56,18 @@ INTEGERは整数、TEXTは文字列として検証します。全カラムを必
 これらは行単位の検証です。外部キー・UNIQUE・複合主キー・画像とイベントの所属一致、
 キャンパスごとのキーワード最大3件など、複数行にまたがる制約はDB・APIで保証する必要があります。
 認証用テーブルの型には `password_hash` が含まれるため、公開レスポンスにはそのまま使用しないでください。
+
+## 学校向け入力フォーム
+
+`school_forms.ts` では保存済みレコードとは別に、入力用の `schoolFormSchema`・
+`schoolStaffFormSchema` と `SchoolForm` 型を公開します。
+学校フォームはサーバー管理のID・公開状態・検索更新版を受け取らず、
+学校名・所在地・分野・都道府県の必須チェック、HTTP(S)の公式URL、最大3件のキーワードの空白除去・重複チェックを行います。
+未入力の公式URLは空文字列を許可します。これらの必須条件は掲載準備用フォームの暫定条件です。
+担当者フォームはメール形式・パスワード入力・確認値一致を検証します。
+認証方式と正式なパスワードポリシーの確定後に、APIと合わせて更新してください。
+
+担当者フォームの `school_name`・`staff_name` は画面の入力値です。学校名は次の編集画面に引き継ぎ、
+担当者氏名はメモリー内のみで保持します。`clients` テーブルの列追加は行いません。
+学校フォームの `event_title`・`event_date` は任意のイベント下書きで、片方のみの入力は拒否します。
+既存下書きとの互換性のため未指定時は空文字列を補います。DBの日時列や必須条件を確定するものではありません。

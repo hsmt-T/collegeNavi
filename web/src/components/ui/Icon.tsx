@@ -5,6 +5,10 @@ import './ui.css'
 const glyphs = {
   arrowForward: '\uE5C8',
   upload: '\uE2C6',
+  download: '\uE2C4',
+  description: '\uE873',
+  edit: '\uE3C9',
+  calendar: '\uE878',
   radioChecked: '\uE837',
   checkCircle: '\uE86C',
   image: '\uE3F4',

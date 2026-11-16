@@ -1,2 +1,2 @@
-当/webは「専門学校進学ガイド」カレッジナビのwebページ作成ようリポジトリです。
-Page作成時は'/src/components'の中のReactコンポーネントを使用して構築してください。
+- Page作成時は'/src/components'の中のReactコンポーネントを使用して構築してください。
+- API連携はSWRを使用し、共通通信処理を`src/lib/`、機能別のAPI関数・データ取得Hook・表示コンポーネントを`src/features/{機能名}/`、画面構成を`src/pages/`に配置して責務を分離する。
