@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@collegenavi/schemas':
+        specifier: link:../schemas
+        version: link:../schemas
       '@hono/swagger-ui':
         specifier: ^0.6.2
         version: 0.6.2(hono@4.13.13)

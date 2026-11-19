@@ -26,7 +26,7 @@ export function SchoolLayout({
   stage?: RegistrationStage
   children: ReactNode
 }) {
-  const { school, registration } = useSchoolDraft()
+  const { school } = useSchoolDraft()
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const heading = useRef<HTMLHeadingElement>(null)
@@ -75,11 +75,7 @@ export function SchoolLayout({
       >
         {stage && stage !== 'registration' ? (
           <Sidebar
-            schoolName={
-              school.name ||
-              registration.school_name ||
-              '学校情報を登録してください'
-            }
+            schoolName={school.name || '学校情報を登録してください'}
             items={items}
             activeItem={
               stage === 'schoolInformation' ? 'schoolInformation' : stage

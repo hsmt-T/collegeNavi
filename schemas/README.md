@@ -23,10 +23,20 @@ pnpm install --frozen-lockfile
 
 `schemas/**` の変更時は API CI と Web CI の両方が実行されます。
 
+## クライアント認証APIの契約（仕様案）
+
+`client_auth.ts` に登録・ログインのリクエスト、レスポンス、共通エラーと推論型を定義します。
+登録入力は `schoolStaffFormSchema` と共通で、ログイン入力はメールアドレスとパスワードです。
+`publicClientSchema` は `id`・`name`・`email` のみを明示し、`password_hash` を公開しません。
+成功応答は `{ client: ... }`、エラー応答は `{ error: { code, message } }` です。
+パスワードはハッシュ化前の入力に8文字以上・30文字以下を要求します。登録・ログイン・担当者フォームで共通です。
+入力はトリム・切り詰めしません。セッション方式は未確定で、APIは入力検証後に501を返します。
+API固有のパス・ステータスコード・OpenAPIの例はAPIのpresentationで管理します。
+
 ## テーブルスキーマ
 
-参照元：[Notion DB設計](https://app.notion.com/p/405dfe8ca82180c8891afcd0717c7708)（2026-11-12確認）。
-ToB（学校側）で必要な6テーブル・40カラムの保存済みレコードを、テーブル名と同名のファイルで定義します。
+参照元：[Notion DB設計](https://app.notion.com/p/405dfe8ca82180c8891afcd0717c7708)（2026-11-19更新）。
+ToB（学校側）で必要な7テーブル・42カラムの保存済みレコードを、テーブル名と同名のファイルで定義します。
 カラム名はDB定義どおりの snake_case を使用します。
 
 ```ts
@@ -40,6 +50,7 @@ const college: College = collegeSchema.parse(record)
 | colleges.ts            | collegeSchema           | College           |
 | college_keywords.ts    | collegeKeywordSchema    | CollegeKeyword    |
 | clients.ts             | clientSchema            | Client            |
+| client_colleges.ts     | clientCollegeSchema     | ClientCollege     |
 | events.ts              | eventSchema             | Event             |
 | imgs.ts                | imgSchema               | Img               |
 | college_search_sync.ts | collegeSearchSyncSchema | CollegeSearchSync |
@@ -64,10 +75,14 @@ INTEGERは整数、TEXTは文字列として検証します。全カラムを必
 学校フォームはサーバー管理のID・公開状態・検索更新版を受け取らず、
 学校名・所在地・分野・都道府県の必須チェック、HTTP(S)の公式URL、最大3件のキーワードの空白除去・重複チェックを行います。
 未入力の公式URLは空文字列を許可します。これらの必須条件は掲載準備用フォームの暫定条件です。
-担当者フォームはメール形式・パスワード入力・確認値一致を検証します。
-認証方式と正式なパスワードポリシーの確定後に、APIと合わせて更新してください。
+担当者フォームはメール形式・パスワード8〜30文字・確認値一致を検証します。
+認証方式や文字数以外のパスワード条件を確定した場合は、APIと合わせて更新してください。
 
-担当者フォームの `school_name`・`staff_name` は画面の入力値です。学校名は次の編集画面に引き継ぎ、
-担当者氏名はメモリー内のみで保持します。`clients` テーブルの列追加は行いません。
+担当者登録時には学校名を入力しません。学校名は後続の学校情報入力画面で `schoolFormSchema.name` として受け取ります。
+`staff_name` はAPIの本処理実装時に `clients.name` へ保存する担当者氏名です。
+現在のWebは掲載準備用で、APIへの送信・DB保存は未実装です。
+`clients` は `college_id` を保持せず、学校未登録でも担当者を作成できます。
+所属は `client_colleges(client_id, college_id)` に保存し、組み合わせを複合主キーとします。
+担当者とキャンパスは多対多で、認可時は認証済み担当者と対象キャンパスの所属をサーバーで確認します。
 学校フォームの `event_title`・`event_date` は任意のイベント下書きで、片方のみの入力は拒否します。
 既存下書きとの互換性のため未指定時は空文字列を補います。DBの日時列や必須条件を確定するものではありません。

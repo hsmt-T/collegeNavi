@@ -15,7 +15,6 @@ export function SchoolStaffRegisterPage() {
     useSchoolDraft()
   const navigate = useNavigate()
   const [values, setValues] = useState({
-    school_name: registration.school_name,
     staff_name: registration.staff_name,
     email: staffEmail,
     password: '',
@@ -47,13 +46,11 @@ export function SchoolStaffRegisterPage() {
       return
     }
     setRegistration({
-      school_name: result.data.school_name,
       staff_name: result.data.staff_name,
     })
     setStaffEmail(result.data.email)
     // パスワードは次画面に渡さず、保存・送信しない。
     setValues({
-      school_name: result.data.school_name,
       staff_name: result.data.staff_name,
       email: result.data.email,
       password: '',
@@ -74,20 +71,6 @@ export function SchoolStaffRegisterPage() {
       >
         <h2>担当者情報</h2>
         <div className="workflow-divider" />
-        <FormField
-          id="staff-school_name"
-          label="学校名"
-          required
-          autoComplete="organization"
-          value={values.school_name}
-          onChange={(event) =>
-            setValues({ ...values, school_name: event.target.value })
-          }
-          error={
-            errors.find((error) => error.fieldId === 'staff-school_name')
-              ?.message
-          }
-        />
         <FormField
           id="staff-staff_name"
           label="担当者氏名"

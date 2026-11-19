@@ -1,8 +1,11 @@
 import { swaggerUI } from '@hono/swagger-ui'
 import { OpenAPIHono } from '@hono/zod-openapi'
 import type { env } from './infra/cloudflare/env'
+import { clientAuthRoutes } from './presentation/routes/client-auth'
 
 const app = new OpenAPIHono<env>()
+
+app.route('/', clientAuthRoutes)
 
 app.get('/health/db', async (c) => {
   const result = await c.env.D1.prepare('SELECT 1 AS connected').first<{

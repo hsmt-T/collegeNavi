@@ -15,13 +15,9 @@ import { SaveNotice } from '../components/ui/SaveNotice'
 import { Icon } from '../components/ui/Icon'
 
 export function SchoolEditPage() {
-  const { school, saveSchool, setImage, imageUrl, registration } =
-    useSchoolDraft()
+  const { school, saveSchool, setImage, imageUrl } = useSchoolDraft()
   const navigate = useNavigate()
-  const [values, setValues] = useState<SchoolForm>({
-    ...school,
-    name: school.name || registration.school_name,
-  })
+  const [values, setValues] = useState<SchoolForm>(school)
   const [keywords, setKeywords] = useState(() =>
     Array.from({ length: 3 }, (_, i) => school.keywords[i] ?? ''),
   )

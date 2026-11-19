@@ -16,8 +16,8 @@ export const emptySchool: SchoolForm = {
 export type SchoolDraftContextValue = {
   school: SchoolForm
   saveSchool: (value: SchoolForm) => boolean
-  registration: { school_name: string; staff_name: string }
-  setRegistration: (value: { school_name: string; staff_name: string }) => void
+  registration: { staff_name: string }
+  setRegistration: (value: { staff_name: string }) => void
   staffEmail: string
   setStaffEmail: (email: string) => void
   image: File | null

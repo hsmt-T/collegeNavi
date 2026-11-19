@@ -13,7 +13,6 @@ export function SchoolDraftProvider({ children }: { children: ReactNode }) {
   })
   const [staffEmail, setStaffEmail] = useState('')
   const [registration, setRegistration] = useState({
-    school_name: '',
     staff_name: '',
   })
   const [selection, setSelection] = useState<{

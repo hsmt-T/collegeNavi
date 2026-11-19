@@ -4,10 +4,12 @@ import { collegeSchema } from './colleges'
 
 export const schoolStaffFormSchema = z
   .object({
-    school_name: z.string().trim().min(1, '学校名を入力してください。'),
     staff_name: z.string().trim().min(1, '担当者氏名を入力してください。'),
     email: clientSchema.shape.email,
-    password: z.string().min(1, 'パスワードを入力してください。'),
+    password: z
+      .string()
+      .min(8, 'パスワードは8文字以上で入力してください。')
+      .max(30, 'パスワードは30文字以下で入力してください。'),
     password_confirmation: z.string(),
   })
   .refine((value) => value.password === value.password_confirmation, {
