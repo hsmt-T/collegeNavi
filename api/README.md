@@ -33,6 +33,23 @@ pnpm dev
 const app = new Hono<{ Bindings: CloudflareBindings }>()
 ```
 
+## API ドキュメント
+
+`pnpm dev` で起動後、以下のURLを開きます。本番でも同じパスで公開されます。
+
+| パス            | 内容                                                      |
+| --------------- | --------------------------------------------------------- |
+| `/docs`         | Swagger UI。API仕様の閲覧とTry it outによるリクエスト実行 |
+| `/openapi.json` | OpenAPI 3.1のJSON定義                                     |
+
+既存の `GET /health/db` は通常のHonoルートのままとし、OpenAPI定義には含めません。
+現時点のOpenAPI定義には業務APIが未登録のため、エンドポイント一覧は空です。
+Swagger UIは同じオリジンのAPIへリクエストします。UIのJS・CSSは外部CDNから読み込みます。
+
+APIの追加時は `@hono/zod-openapi` の `createRoute` と `app.openapi` でルートを登録し、
+入力・応答スキーマは `/schemas` のZod 4スキーマを共有してください。
+ルート定義からOpenAPIを生成するため、別のJSON仕様を手作業で管理する必要はありません。
+
 ## Hono CLI
 
 `@hono/cli` を開発依存として導入しています。
